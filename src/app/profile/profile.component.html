@@ -1,0 +1,56 @@
+<mat-toolbar>
+
+</mat-toolbar>
+<div class="profile-view">
+  <!-- User Profile -->
+  <mat-card class="profile-card-header">
+    <mat-card-header>
+      <mat-card-title>Profile Information</mat-card-title>
+    </mat-card-header>
+
+    <!-- View Profile Information -->
+    <mat-card-content>
+      <p><b>Username:</b> {{user.Username}}</p>
+      <p><b>Email:</b> {{user.Email}}</p>
+      <p><b>Birthday:</b> {{user.Birthday | date}}</p>
+    </mat-card-content>
+    
+    <!-- Update your profile -->
+    <mat-card-header>
+      <mat-card-title>Edit your profile information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="edit-profile-dialog-content">
+      <form>
+        <p>
+          <mat-form-field class="form__field" floatLabel="always">
+            <mat-label>Username</mat-label>
+            <input matInput [(ngModel)]="userData.Username" placeholder="{{this.user.Username}}" type="text" name="Username">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field class="form__field" floatLabel="always">
+            <mat-label>Password</mat-label>
+            <input matInput [(ngModel)]="userData.Password" type="password" placeholder="Hidden" name="Password">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field class="form__field" floatLabel="always">
+            <mat-label>Email</mat-label>
+            <input matInput [(ngModel)]="userData.Email" type="email" placeholder="{{this.user.Email}}" name="Email">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field class="form__field" floatLabel="always">
+            <mat-label>Birthday</mat-label>
+            <input matInput [(ngModel)]="userData.Birthday" placeholder="{{this.user.Birthday | date}}" name="Birthday">
+          </mat-form-field>
+        </p>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="handleUpdate()" color="primary">
+        Update your information
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

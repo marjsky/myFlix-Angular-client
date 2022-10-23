@@ -1,22 +1,12 @@
-<mat-toolbar>
-
+<mat-toolbar color="primary" ><span>MyFlix</span><span class="space"></span>
+  <button mat-button (click)="openMovieView()" color="secondary">Movies list</button>
+  <button mat-button (click)="logout()" color="secondary">Logout</button>
 </mat-toolbar>
 <div class="profile-view">
   <!-- User Profile -->
   <mat-card class="profile-card-header">
-    <mat-card-header>
-      <mat-card-title>Profile Information</mat-card-title>
-    </mat-card-header>
-
-    <!-- View Profile Information -->
-    <mat-card-content>
-      <p><b>Username:</b> {{user.Username}}</p>
-      <p><b>Email:</b> {{user.Email}}</p>
-      <p><b>Birthday:</b> {{user.Birthday | date}}</p>
-    </mat-card-content>
-    
     <!-- Update your profile -->
-    <mat-card-header>
+    <mat-card-header class="profile-card-title">
       <mat-card-title>Edit your profile information</mat-card-title>
     </mat-card-header>
     <mat-card-content class="edit-profile-dialog-content">
@@ -24,19 +14,19 @@
         <p>
           <mat-form-field class="form__field" floatLabel="always">
             <mat-label>Username</mat-label>
-            <input matInput [(ngModel)]="userData.Username" placeholder="{{this.user.Username}}" type="text" name="Username">
+            <input matInput [(ngModel)]="userData.Username" placeholder="{{this.user.Username}}" type="text" name="Username" required>
           </mat-form-field>
         </p>
         <p>
           <mat-form-field class="form__field" floatLabel="always">
             <mat-label>Password</mat-label>
-            <input matInput [(ngModel)]="userData.Password" type="password" placeholder="Hidden" name="Password">
+            <input matInput [(ngModel)]="userData.Password" type="password" placeholder="Hidden" name="Password" required>
           </mat-form-field>
         </p>
         <p>
           <mat-form-field class="form__field" floatLabel="always">
             <mat-label>Email</mat-label>
-            <input matInput [(ngModel)]="userData.Email" type="email" placeholder="{{this.user.Email}}" name="Email">
+            <input matInput [(ngModel)]="userData.Email" type="email" placeholder="{{this.user.Email}}" name="Email" required>
           </mat-form-field>
         </p>
         <p>

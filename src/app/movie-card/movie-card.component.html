@@ -1,30 +1,55 @@
-<div style="display: flex">
-  <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
+<mat-toolbar color="primary" ><span>MyFlix</span><span class="space"></span>
+  <button mat-button (click)="openProfileView()" color="secondary">Profile: {{user}}</button>
+  <button mat-button (click)="logout()" color="secondary">Logout</button>
+</mat-toolbar>
+<div class="movies-view">
+  <mat-card *ngFor="let movie of movies;" class="movie-card">
     <mat-card-header>
       <mat-card-title>{{movie.Title}}</mat-card-title>
-      <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
+      <mat-card-subtitle>Directed by: 
+          {{movie.Director.Name}}
+      </mat-card-subtitle>
     </mat-card-header>
     <img src={{movie.ImagePath}} alt="{{movie.Title}}"/>
-    <mat-card-actions>
+    <mat-card-actions class="movie-link-bottons">
       <button
         mat-button
+        (click)="openGenreDialog(movie.Genre.Description, movie.Genre.Name)"
         color="primary"
       >
         Genre
       </button>
       <button
-      mat-button
-      color="primary"
-      >
-        Director
+        mat-button
+        (click)="openDirectorDialog(movie.Director.Name, movie.Director.Bio, movie.Director.Birth)" 
+        color="primary"
+        >
+          Director
       </button>
       <button
-      mat-button
-      color="primary"
-      >
-        Synopsis
+        mat-button
+        (click)="openSynopsisDialog(movie.Title, movie.Description)"
+        color="primary"
+        >
+          Synopsis
       </button>
-      <mat-icon>favorite_border</mat-icon>
+      <!-- Render add favorite movie botton or hide it depend on if conditions -->
+      <button
+        mat-button
+        *ngIf="!isFav(movie._id)"
+        (click)="addToFavoriteMovies(movie._id)"
+        color="primary"
+      >
+        <mat-icon>favorite_border</mat-icon>
+      </button>
+      <button
+        mat-button
+        *ngIf="isFav(movie._id)"
+        (click)="removeFromFavoriteMovies(movie._id)"
+        color="primary"
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

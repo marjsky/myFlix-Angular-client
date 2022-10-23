@@ -65,4 +65,14 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  openMovieView(): void {
+    this.router.navigate(['movies']);
+  }
+  
+  logout(): void {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    this.router.navigate(['welcome']);
+  }
+
 }

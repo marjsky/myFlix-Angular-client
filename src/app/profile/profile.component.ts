@@ -29,6 +29,11 @@ export class ProfileComponent implements OnInit {
     this.getUser();
   }
 
+  /**
+   * Get user data through API calls
+   * @function getUser
+   * @returns object of user data
+   */
   getUser(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
@@ -37,6 +42,11 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Update user data
+   * @function handleUpdate
+   * @returns welcome page after successful updated user data
+   */
   handleUpdate(): void {
     console.log('userData:');
     this.fetchApiData.editUser(this.userData).subscribe((resp) => {
@@ -55,6 +65,11 @@ export class ProfileComponent implements OnInit {
     })
   }
   
+  /**
+   * Delete user 
+   * @function deleteProfile
+   * @returns welcome page after successful delete user data
+   */
   deleteProfile(): void {
     if(confirm('Are you sure want to remove your account?')) {
       this.router.navigate(['welcome']).then(() => {

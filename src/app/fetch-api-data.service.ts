@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = 'https://movie-api-5jsk.onrender.com/';
+const apiUrl = 'https://movie-api-production-3c8a.up.railway.app/';
 
 const token = localStorage.getItem('token');
 
